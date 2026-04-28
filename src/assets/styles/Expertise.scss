@@ -6,6 +6,7 @@
 
     svg {
         color: white;
+        margin-right: 15px;
     }
 }
   
@@ -36,14 +37,32 @@
     }
 }
 
-.flex-chips {
-    line-height: 2;
-    margin: 0.5;
+.chip {
+  border-radius: 20px !important;
+  font-size: 0.75rem !important;
+  height: 28px !important;
+  background-color: #feffff !important;
+  color: #fff !important;
+  transition: all 0.2s ease;
 
-    .chip-title {
-        color: white;
-        padding-right: 10px;
-    }
+  &:hover {
+    background-color: #cfb9f6 !important;
+    transform: translateY(-2px);
+  }
+}
+.flex-chips {
+  line-height: 2;
+  margin: 0.5; 
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.flex-chips .chip-title {
+  color: #ffffff;        
+  margin-right: 8px;
+  font-weight: 600;
 }
 
 .flex-chips .MuiChip-root {

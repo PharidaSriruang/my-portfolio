@@ -19,9 +19,17 @@
     text-decoration: underline;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
+.project img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: top;
+}
   
 .zoom {
     border-radius: 5px;
+    height: 300px;      /* ทำให้สูงเท่ากัน */
+    object-fit: cover;  /* ตัดรูปให้พอดี ไม่ยืด */
     transition: transform .2s;
     margin: 0 auto;
 }

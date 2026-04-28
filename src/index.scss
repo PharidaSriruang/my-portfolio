@@ -15,8 +15,9 @@ code {
 
 .main-container {
   position: relative;
-  background-color: #0d1116;
-
+  background: url('./assets/images/bg1.jpg');
+   min-height: 100vh;
+  
 }
 
 a {
@@ -35,7 +36,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
 .navigation-bar {
   justify-content: space-between;
-  background-color: #0d1116;
+  background-color: #b8c4fd;
 
   button {
     font-size: 1.1rem;
@@ -51,7 +52,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
 .navigation-bar-responsive {
   span, p {
-    color: #0d1116;
+    color: #160d0d;
     font-family: "Lato", sans-serif;
   }
 }
@@ -96,7 +97,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
   background-color: #f8f9fa;
 
   .navigation-bar {
-    background-color: #f8f9fa;
+    background-color: #ffffff;
   }
 
   p, a, h1, h2, h3, h4, h5, label, button {
@@ -112,9 +113,9 @@ p, a, h1, h2, h3, h4, h5, label, button {
     color: #0d1116;
   }
 
-  .about-section {
-    background-image: url("./assets/images/bg-light.png");
-  }
+  // .about-section {
+  //   background-image: url("./assets/images/bg-light.png");
+  // }
 
   .skills-container svg {
     color: #0d1116;

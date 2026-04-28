@@ -17,7 +17,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 
 const drawerWidth = 240;
-const navItems = [['Expertise', 'expertise'], ['History', 'history'], ['Projects', 'projects'], ['Contact', 'contact']];
+const navItems = [['Skills', 'skills'], ['History', 'history'], ['Projects', 'projects']];
 
 function Navigation({parentToChild, modeChange}: any) {
 
@@ -48,12 +48,12 @@ function Navigation({parentToChild, modeChange}: any) {
 
   const scrollToSection = (section: string) => {
     console.log(section)
-    const expertiseElement = document.getElementById(section);
-    if (expertiseElement) {
-      expertiseElement.scrollIntoView({ behavior: 'smooth' });
-      console.log('Scrolling to:', expertiseElement);  // Debugging: Ensure the element is found
+    const skillsElement = document.getElementById(section);
+    if (skillsElement) {
+      skillsElement.scrollIntoView({ behavior: 'smooth' });
+      console.log('Scrolling to:',skillsElement);  // Debugging: Ensure the element is found
     } else {
-      console.error('Element with id "expertise" not found');  // Debugging: Log error if element is not found
+      console.error('Element with id "skills" not found');  // Debugging: Log error if element is not found
     }
   };
 
@@ -76,7 +76,25 @@ function Navigation({parentToChild, modeChange}: any) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" id="navigation" className={`navbar-fixed-top${scrolled ? ' scrolled' : ''}`}>
+      <AppBar
+        component="nav"
+        id="navigation"
+        className={`navbar-fixed-top${scrolled ? ' scrolled' : ''}`}
+        sx={{
+          // Background changes based on scroll + mode
+          backgroundColor: scrolled
+            ? (mode === 'dark' ? '#040405' : '#ffffff')
+            : 'transparent',
+
+          // Add blur effect when scrolled
+          backdropFilter: scrolled ? 'blur(10px)' : 'none',
+
+          // Remove shadow when not scrolled
+          boxShadow: scrolled ? 3 : 'none',
+
+          transition: 'all 0.3s ease'
+        }}
+      >
         <Toolbar className='navigation-bar'>
           <IconButton
             color="inherit"
@@ -87,31 +105,47 @@ function Navigation({parentToChild, modeChange}: any) {
           >
             <MenuIcon />
           </IconButton>
+
           {mode === 'dark' ? (
             <LightModeIcon onClick={() => modeChange()}/>
           ) : (
             <DarkModeIcon onClick={() => modeChange()}/>
           )}
+
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item[0]} onClick={() => scrollToSection(item[1])} sx={{ color: '#fff' }}>
+              <Button
+                key={item[0]}
+                onClick={() => scrollToSection(item[1])}
+                sx={{
+                  color: mode === 'dark' ? '#ffffffaa' : '#000000aa'
+                }}
+              >
                 {item[0]}
               </Button>
             ))}
           </Box>
         </Toolbar>
       </AppBar>
+
       <nav>
         <Drawer
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+
+            // Custom Drawer background
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+              backgroundColor: mode === 'dark' ? '#121212' : '#ffffff',
+              color: mode === 'dark' ? '#ffffff' : '#000000'
+            },
           }}
         >
           {drawer}
